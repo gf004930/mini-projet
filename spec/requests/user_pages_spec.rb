@@ -140,6 +140,7 @@ describe "User pages" do
       before do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
+        fill_in "Lab",          with: "Lab Test"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
       end
@@ -185,9 +186,11 @@ describe "User pages" do
     describe "with valid information" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
+      let(:new_lab) { "lab test" }
       before do
         fill_in "Name",             with: new_name
         fill_in "Email",            with: new_email
+        fill_in "Lab",            with: new_lab
         fill_in "Password",         with: user.password
         fill_in "Confirm Password", with: user.password
         click_button "Save changes"
@@ -198,6 +201,7 @@ describe "User pages" do
       it { should have_link('Sign out', href: signout_path) }
       specify { user.reload.name.should  == new_name }
       specify { user.reload.email.should == new_email }
+      specify { user.reload.lab.should == new_lab }
     end
   end
 
