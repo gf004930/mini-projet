@@ -12,6 +12,7 @@
 #  publication_name :string(255)
 #  year             :integer
 #  month            :integer
+#  notes            :string(255)
 #
 
 require 'spec_helper'
