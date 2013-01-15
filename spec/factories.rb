@@ -18,6 +18,7 @@ FactoryGirl.define do
     month "1"
     year "2013"
     content "Lorem ipsum"
+    notes "No notes..."
     user
   end
 end

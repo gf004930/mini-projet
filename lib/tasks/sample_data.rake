@@ -36,14 +36,16 @@ def make_microposts
     month = "1"
     year = "2013"
     content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(title: title, post_type: post_type, publication_name: publication_name, month: month, year: year, content: content) }
+    notes = "No notes..."
+    users.each { |user| user.microposts.create!(title: title, post_type: post_type, publication_name: publication_name, month: month, year: year, content: content, notes: notes) }
     title = "Title"
     post_type = "conference"
     publication_name = "Conference #{n+1}"
     month = "1"
     year = "2013"
     content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(title: title, post_type: post_type, publication_name: publication_name, month: month, year: year, content: content) }
+    notes = "No notes..."
+    users.each { |user| user.microposts.create!(title: title, post_type: post_type, publication_name: publication_name, month: month, year: year, content: content, notes: notes) }
   end
 end
 

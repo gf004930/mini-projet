@@ -16,7 +16,7 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :title, :post_type, :publication_name, :month, :year, :content
+  attr_accessible :title, :post_type, :publication_name, :month, :year, :content, :notes
   belongs_to :user
 
   validates :user_id, presence: true
@@ -25,7 +25,8 @@ class Micropost < ActiveRecord::Base
   validates :publication_name, presence: true, length: { maximum: 80 }
   validates :month, presence: true,  :numericality => { :greater_than => 0, :less_than_or_equal_to => 12 }
   validates :year, presence: true, :numericality => {:only_integer => true}, :numericality => { :greater_than => 1949, :less_than_or_equal_to => 3000 }
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 300 }
+  validates :notes, presence: true, length: { maximum: 140 }
 
   default_scope order: 'microposts.created_at DESC'
 

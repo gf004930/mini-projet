@@ -10,6 +10,7 @@
     <%= f.number_field :year, :placeholder => "Year", :in => 1950...3000, :class => "input-small" %>
     </span>
     <%= f.text_area :content, placeholder: "Summarize that publication..." %>
+    <%= f.text_area :notes, placeholder: "Notes about this" %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

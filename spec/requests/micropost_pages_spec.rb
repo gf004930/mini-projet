@@ -31,6 +31,7 @@ describe "Micropost pages" do
         fill_in 'micropost_month', with: "1"
         fill_in 'micropost_year', with: "2013"
         fill_in 'micropost_content', with: "Lorem ipsum"
+        fill_in 'micropost_notes', with: "No notes..."
       end
       it "should create a micropost" do
         expect { click_button "Post" }.to change(Micropost, :count).by(1)

@@ -20,7 +20,7 @@ require 'spec_helper'
 describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @micropost = user.microposts.build(title: "title", post_type: "journal", publication_name: "Publication", month: "1", year: "2013", content: "Lorem ipsum") }
+  before { @micropost = user.microposts.build(title: "title", post_type: "journal", publication_name: "Publication", month: "1", year: "2013", content: "Lorem ipsum", notes: "All notes about publication") }
 
   subject { @micropost }
 
@@ -30,6 +30,7 @@ describe Micropost do
   it { should respond_to(:month) }
   it { should respond_to(:year) }
   it { should respond_to(:content) }
+  it { should respond_to(:notes) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   its(:user) { should == user }
@@ -55,7 +56,7 @@ describe Micropost do
   end
 
   describe "with content that is too long" do
-    before { @micropost.content = "a" * 141 }
+    before { @micropost.content = "a" * 301 }
     it { should_not be_valid }
   end
 
@@ -124,4 +125,13 @@ describe Micropost do
     it { should be_valid }
   end
 
+  describe "with blank notes" do
+    before { @micropost.notes = " " }
+    it { should_not be_valid }
+  end
+
+  describe "with notes that are too long" do
+    before { @micropost.notes = "a" * 141 }
+    it { should_not be_valid }
+  end
 end
