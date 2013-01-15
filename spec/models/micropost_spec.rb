@@ -16,7 +16,7 @@ require 'spec_helper'
 describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @micropost = user.microposts.build(title: "title", content: "Lorem ipsum") }
+  before { @micropost = user.microposts.build(title: "title", post_type: "journal", content: "Lorem ipsum") }
 
   subject { @micropost }
 
@@ -57,7 +57,22 @@ describe Micropost do
   end
 
   describe "with title that is too long" do
-    before { @micropost.title = "a" * 141 }
+    before { @micropost.title = "a" * 81 }
     it { should_not be_valid }
+  end
+
+  describe "with post_type other than conference or journal" do
+    before { @micropost.post_type = "a" * 10 }
+    it { should_not be_valid }
+  end
+
+  describe "with post_type as journal" do
+    before { @micropost.post_type = "journal" }
+    it { should be_valid }
+  end
+
+  describe "with post_type as conference" do
+    before { @micropost.post_type = "conference" }
+    it { should be_valid }
   end
 end

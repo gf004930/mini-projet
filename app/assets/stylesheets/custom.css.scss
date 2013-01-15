@@ -195,7 +195,7 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-input {
+input, select {
   height: auto !important;
 }
 
@@ -238,9 +238,14 @@ input {
     border-top: 1px solid #e8e8e8;
   }
 }
-.title {
+.post_head {
   display: block;
+}
+.title {
   text-decoration:underline;
+}
+.post_type {
+  font-style: italic;
 }
 .content {
   display: block;

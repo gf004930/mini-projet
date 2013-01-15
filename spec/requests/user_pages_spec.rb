@@ -61,7 +61,11 @@ describe "User pages" do
     it { should have_selector('title', text: user.name) }
 
     describe "microposts" do
+      it { should have_content(m1.title) }
+      it { should have_content(m1.post_type) }
       it { should have_content(m1.content) }
+      it { should have_content(m2.title) }
+      it { should have_content(m2.post_type) }
       it { should have_content(m2.content) }
       it { should have_content(user.microposts.count) }
     end
