@@ -7,13 +7,15 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  title      :string(255)
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :title, :content
   belongs_to :user
 
   validates :user_id, presence: true
+  validates :title, presence: true
   validates :content, presence: true, length: { maximum: 140 }
 
   default_scope order: 'microposts.created_at DESC'
