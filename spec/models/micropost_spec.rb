@@ -2,13 +2,14 @@
 #
 # Table name: microposts
 #
-#  id         :integer          not null, primary key
-#  content    :string(255)
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  title      :string(255)
-#  post_type  :string(255)
+#  id               :integer          not null, primary key
+#  content          :string(255)
+#  user_id          :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  title            :string(255)
+#  post_type        :string(255)
+#  publication_name :string(255)
 #
 
 require 'spec_helper'
@@ -16,11 +17,13 @@ require 'spec_helper'
 describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @micropost = user.microposts.build(title: "title", post_type: "journal", content: "Lorem ipsum") }
+  before { @micropost = user.microposts.build(title: "title", post_type: "journal", publication_name: "Publication", content: "Lorem ipsum") }
 
   subject { @micropost }
 
   it { should respond_to(:title) }
+  it { should respond_to(:post_type) }
+  it { should respond_to(:publication_name) }
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
@@ -74,5 +77,15 @@ describe Micropost do
   describe "with post_type as conference" do
     before { @micropost.post_type = "conference" }
     it { should be_valid }
+  end
+
+  describe "with blank publication_name" do
+    before { @micropost.publication_name = " " }
+    it { should_not be_valid }
+  end
+
+  describe "with publication_name that is too long" do
+    before { @micropost.publication_name = "a" * 81 }
+    it { should_not be_valid }
   end
 end

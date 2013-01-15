@@ -242,10 +242,12 @@ input, select {
   display: block;
 }
 .title {
+  font-weight: bold;
   text-decoration:underline;
 }
-.post_type {
+.publication_name {
   font-style: italic;
+  font-weight: bold;
 }
 .content {
   display: block;

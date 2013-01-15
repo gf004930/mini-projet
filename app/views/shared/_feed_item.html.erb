@@ -4,7 +4,8 @@
       <%= link_to feed_item.user.name, feed_item.user %>
     </span>
     <span class="post_head">
-      <span class="title"><%= feed_item.title %></span> - <span class="post_type"><%= feed_item.post_type %></span>
+      <span class="title"><%= feed_item.title %></span><br />
+      About the <%= feed_item.post_type %> : <span class="publication_name"><%= feed_item.publication_name %></span>
     </span>
     <span class="content"><%= feed_item.content %></span>
     <span class="timestamp">

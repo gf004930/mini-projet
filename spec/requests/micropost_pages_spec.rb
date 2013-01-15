@@ -27,6 +27,7 @@ describe "Micropost pages" do
       before do 
         fill_in 'micropost_title', with: 'Title'
         select "journal", :from => 'micropost_post_type'
+        fill_in 'micropost_publication_name', with: 'Publication'
         fill_in 'micropost_content', with: "Lorem ipsum"
       end
       it "should create a micropost" do

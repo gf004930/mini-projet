@@ -29,11 +29,17 @@ end
 
 def make_microposts
   users = User.all(limit: 6)
-  50.times do
+  50.times do |n|
     title = "title"
     post_type = "journal"
+    publication_name = "Journal #{n+1}"
     content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(title: title, post_type: post_type, content: content) }
+    users.each { |user| user.microposts.create!(title: title, post_type: post_type, publication_name: publication_name, content: content) }
+    title = "title"
+    post_type = "conference"
+    publication_name = "Conference #{n+1}"
+    content = Faker::Lorem.sentence(5)
+    users.each { |user| user.microposts.create!(title: title, post_type: post_type, publication_name: publication_name, content: content) }
   end
 end
 

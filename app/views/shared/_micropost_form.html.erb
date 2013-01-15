@@ -3,7 +3,8 @@
   <div class="field">
     <%= f.text_field :title, placeholder: "Title" %>
     <%= f.select :post_type, options_for_select(["journal", "conference"]), :prompt => "Select Type" %>
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.text_field :publication_name, placeholder: "Publication name" %>
+    <%= f.text_area :content, placeholder: "Summarize that publication..." %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

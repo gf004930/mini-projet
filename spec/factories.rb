@@ -14,6 +14,7 @@ FactoryGirl.define do
   factory :micropost do
     title "Title"
     post_type "journal"
+    sequence(:publication_name)  { |n| "Publication #{n}" }
     content "Lorem ipsum"
     user
   end
