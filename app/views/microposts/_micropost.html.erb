@@ -3,6 +3,7 @@
     <span class="title"><%= micropost.title %></span><br />
     About the <%= micropost.post_type %> : <span class="publication_name"><%= micropost.publication_name %></span>
   </span>
+  <span class="date">Date : <%= micropost.month %>/<%= micropost.year %></span>
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.

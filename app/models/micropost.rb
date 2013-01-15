@@ -15,13 +15,15 @@
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :title, :post_type, :publication_name, :content
+  attr_accessible :title, :post_type, :publication_name, :month, :year, :content
   belongs_to :user
 
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 80 }
   validates :post_type, presence: true, :inclusion => { :in => ["journal", "conference"] }
   validates :publication_name, presence: true, length: { maximum: 80 }
+  validates :month, presence: true,  :numericality => { :greater_than => 0, :less_than_or_equal_to => 12 }
+  validates :year, presence: true, :numericality => {:only_integer => true}, :numericality => { :greater_than => 1949, :less_than_or_equal_to => 3000 }
   validates :content, presence: true, length: { maximum: 140 }
 
   default_scope order: 'microposts.created_at DESC'

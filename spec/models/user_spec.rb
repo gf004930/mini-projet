@@ -194,7 +194,7 @@ describe User do
 
       before do
         @user.follow!(followed_user)
-        3.times { followed_user.microposts.create!(title: "title", post_type: "journal", publication_name: "Publication", content: "Lorem ipsum") }
+        3.times { followed_user.microposts.create!(title: "Title", post_type: "journal", publication_name: "Publication", month: "1", year: "2013", content: "Lorem ipsum") }
       end
 
       its(:feed) { should include(newer_micropost) }

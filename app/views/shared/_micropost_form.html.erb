@@ -4,6 +4,11 @@
     <%= f.text_field :title, placeholder: "Title" %>
     <%= f.select :post_type, options_for_select(["journal", "conference"]), :prompt => "Select Type" %>
     <%= f.text_field :publication_name, placeholder: "Publication name" %>
+    <span class="form-inline">
+    <%= f.label :month, "Publication date :" %>
+    <%= f.number_field :month, :placeholder => "Month", :in => 1...13, :class => "input-small" %> / 
+    <%= f.number_field :year, :placeholder => "Year", :in => 1950...3000, :class => "input-small" %>
+    </span>
     <%= f.text_area :content, placeholder: "Summarize that publication..." %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>

@@ -7,6 +7,7 @@
       <span class="title"><%= feed_item.title %></span><br />
       About the <%= feed_item.post_type %> : <span class="publication_name"><%= feed_item.publication_name %></span>
     </span>
+  <span class="date">Date : <%= feed_item.month %>/<%= feed_item.year %></span>
     <span class="content"><%= feed_item.content %></span>
     <span class="timestamp">
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.

@@ -19,13 +19,15 @@ require 'spec_helper'
 describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @micropost = user.microposts.build(title: "title", post_type: "journal", publication_name: "Publication", content: "Lorem ipsum") }
+  before { @micropost = user.microposts.build(title: "title", post_type: "journal", publication_name: "Publication", month: "1", year: "2013", content: "Lorem ipsum") }
 
   subject { @micropost }
 
   it { should respond_to(:title) }
   it { should respond_to(:post_type) }
   it { should respond_to(:publication_name) }
+  it { should respond_to(:month) }
+  it { should respond_to(:year) }
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
@@ -90,4 +92,35 @@ describe Micropost do
     before { @micropost.publication_name = "a" * 81 }
     it { should_not be_valid }
   end
+
+  describe "with month that is too low" do
+    before { @micropost.month = "0" }
+    it { should_not be_valid }
+  end
+
+  describe "with month that is too high" do
+    before { @micropost.month = "13" }
+    it { should_not be_valid }
+  end
+
+  describe "with month in the bounds" do
+    before { @micropost.month = "6" }
+    it { should be_valid }
+  end
+
+  describe "with year that is too low" do
+    before { @micropost.year = "1949" }
+    it { should_not be_valid }
+  end
+
+  describe "with year that is too high" do
+    before { @micropost.year = "3001" }
+    it { should_not be_valid }
+  end
+
+  describe "with year in the bounds" do
+    before { @micropost.year = "2000" }
+    it { should be_valid }
+  end
+
 end

@@ -15,6 +15,8 @@ FactoryGirl.define do
     title "Title"
     post_type "journal"
     sequence(:publication_name)  { |n| "Publication #{n}" }
+    month "1"
+    year "2013"
     content "Lorem ipsum"
     user
   end
