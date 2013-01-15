@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  title      :string(255)
+#  post_type  :string(255)
 #
 
 require 'spec_helper'
@@ -47,6 +48,16 @@ describe Micropost do
 
   describe "with content that is too long" do
     before { @micropost.content = "a" * 141 }
+    it { should_not be_valid }
+  end
+
+  describe "with blank title" do
+    before { @micropost.title = " " }
+    it { should_not be_valid }
+  end
+
+  describe "with title that is too long" do
+    before { @micropost.title = "a" * 141 }
     it { should_not be_valid }
   end
 end

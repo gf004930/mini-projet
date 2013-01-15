@@ -8,10 +8,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  title      :string(255)
+#  post_type  :string(255)
 #
 
 class Micropost < ActiveRecord::Base
-  attr_accessible :title, :content
+  attr_accessible :title, :post_type, :content
   belongs_to :user
 
   validates :user_id, presence: true
