@@ -13,6 +13,10 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def index
+    @microposts = Micropost.paginate(page: params[:page])
+  end
+
   def destroy
     @micropost.destroy
     redirect_to root_url
