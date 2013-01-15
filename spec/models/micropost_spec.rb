@@ -10,6 +10,8 @@
 #  title            :string(255)
 #  post_type        :string(255)
 #  publication_name :string(255)
+#  year             :integer
+#  month            :integer
 #
 
 require 'spec_helper'
